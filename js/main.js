@@ -11,6 +11,7 @@ var obj = {
     "fnc5": true
 };
 
+
 document.addEventListener("DOMContentLoaded", function () {
     console.log("ready");
 
@@ -141,26 +142,54 @@ var userData = {
     "password": "userpassword"
 };
 
+// function login() {
+//     var username = document.getElementsByName("username")[0].value;
+//     var password = document.getElementsByName("userpassword")[0].value;
+//
+//
+//     if ((username === userData.login) && (password === userData.password)) {
+//         alert("Авторизация прошла успешно");
+//     }
+//     else {
+//         alert("Неправильный логин или пароль");
+//     }
+//
+//     // var username = document.getElementById("username").value;
+//     // var username = document.getElementsByName("username")[1].value;
+//     // var username = document.getElementsByClassName("username")[0].value;
+//     // var username = document.getElementsByTagName("input")[0].value;
+//     // var form=document.getElementsByName("userForm")[0];
+//     console.log({
+//         "username": username,
+//         "password": password
+//     });
+//
+// }
+
 function login() {
-    var username = document.getElementsByName("username")[0].value;
-    var password = document.getElementsByName("userpassword")[0].value;
-
-
-    if ((username === userData.login) && (password === userData.password)) {
-        alert("Авторизация прошла успешно");
-    }
-    else {
-        alert("Неправильный логин или пароль");
-    }
-
-    // var username = document.getElementById("username").value;
-    // var username = document.getElementsByName("username")[1].value;
-    // var username = document.getElementsByClassName("username")[0].value;
-    // var username = document.getElementsByTagName("input")[0].value;
-    // var form=document.getElementsByName("userForm")[0];
+    var form = document.getElementsByName('userForm')[0];
+    var elements = form.elements;
+    console.log(elements);
+    var username = elements[0].value;
+    var password = elements[1].value;
+    form.elements[0].attributes.style.nodeValue = "height: 90px";
+    // var password=form.getElementsByName('password')[0].value;
     console.log({
         "username": username,
         "password": password
     });
-
+}
+function showPwd(input) {
+    // console.log(input);
+    var pwdField = document.getElementsByName('userpassword')[0];
+    var btn = document.getElementsByName("showpwd")[0];
+    if (pwdField.type === "password") {
+        pwdField.type = "text";
+        btn.textContent = "Скрыть пароль";
+    }
+    else {
+        pwdField.type = "password";
+        btn.textContent = "Показать пароль";
+    }
+    // pwdField.attributes.type.nodeValue="text";
 }
